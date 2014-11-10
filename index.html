@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../favicon.ico">
+    <title>Обучающий пример</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap-theme.min.css">
+    <link href="./public/css/theme.css" rel="stylesheet">
+    <!--TODO - подключить при помощи require.js-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
+</head>
+
+<body role="document">
+
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+                    aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#ria.com">RIA.com</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="#">AUTO.RIA.com</a></li>
+                <li><a href="#about">DOM.RIA.com</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="container theme-showcase" role="main">
+
+
+    <div class="page-header">
+        <h1>Пользователи</h1>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <table class="table table-hover" id="firstTable">
+                <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Имя</th>
+                    <th>Фамилия</th>
+                    <th>Username</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>Василий</td>
+                    <td>Лялюк</td>
+                    <td>lyalyuk</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>Александр</td>
+                    <td>Дяченко</td>
+                    <td>alex88</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>Игорь</td>
+                    <td>Могила</td>
+                    <td>ihor</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="col-md-6">
+            <table class="table table-hover" id="secondTable">
+                <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Имя</th>
+                    <th>Фамилия</th>
+                    <th>Username</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>Олег</td>
+                    <td>Черний</td>
+                    <td>master</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>Олеся</td>
+                    <td>Рыльцова</td>
+                    <td>olesya</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>Андрей</td>
+                    <td>Лавренюк</td>
+                    <td>lavr</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!--TODO Вынести это в отдельный модуль-->
+    <script>
+        $(document).ready(function () {
+            $('#firstTable').click(function (e) {
+                e.preventDefault();
+                if (e.target.tagName === 'TD') {
+                    $('#secondTable tbody').append($(e.target.parentNode));
+                }
+            });
+            $('#secondTable').click(function (e) {
+                e.preventDefault();
+                if (e.target.tagName === 'TD') {
+                    $('#firstTable tbody').append($(e.target.parentNode));
+                }
+            });
+        });
+    </script>
+</div>
+</body>
+</html>
