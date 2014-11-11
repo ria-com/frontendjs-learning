@@ -28,3 +28,5 @@
 Как подключить на страничку *require.js* можно почитать по [ссылке](http://requirejs.org/docs/start.html#get)
 
 Если понадобится презентация - её можно посмотреть [тут](https://docs.google.com/a/ria.com/presentation/d/1tX7CKmrJ6ebHGyWIdbWsxoSzvK3gSGVA_mq-ArJPk-o/edit?usp=sharing)
+
+[Тут](http://habrahabr.ru/post/152833/) неплохая статья о том, как начать работу require.js
