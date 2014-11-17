@@ -11,8 +11,6 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap-theme.min.css">
     <link href="./public/css/theme.css" rel="stylesheet">
-    <!--TODO - подключить при помощи require.js-->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
 </head>
 
 <body role="document">
@@ -39,95 +37,29 @@
 </nav>
 
 <div class="container theme-showcase" role="main">
-
-
-    <div class="page-header">
-        <h1>Пользователи</h1>
-    </div>
-    <div class="row">
-        <div class="col-md-6">
-            <table class="table table-hover" id="firstTable">
-                <thead>
-                <tr>
-                    <th>#</th>
-                    <th>Имя</th>
-                    <th>Фамилия</th>
-                    <th>Username</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>Василий</td>
-                    <td>Лялюк</td>
-                    <td>lyalyuk</td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>Александр</td>
-                    <td>Дяченко</td>
-                    <td>alex88</td>
-                </tr>
-                <tr>
-                    <td>3</td>
-                    <td>Игорь</td>
-                    <td>Могила</td>
-                    <td>ihor</td>
-                </tr>
-                </tbody>
-            </table>
+    <div class="row" id="thumbnails">
+        <div class="col-xs-6 col-md-3">
+            <a href="#" class="thumbnail">
+                <img src="./public/images/2.jpg" alt="...">
+            </a>
         </div>
-        <div class="col-md-6">
-            <table class="table table-hover" id="secondTable">
-                <thead>
-                <tr>
-                    <th>#</th>
-                    <th>Имя</th>
-                    <th>Фамилия</th>
-                    <th>Username</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>Олег</td>
-                    <td>Черний</td>
-                    <td>master</td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>Олеся</td>
-                    <td>Рыльцова</td>
-                    <td>olesya</td>
-                </tr>
-                <tr>
-                    <td>3</td>
-                    <td>Андрей</td>
-                    <td>Лавренюк</td>
-                    <td>lavr</td>
-                </tr>
-                </tbody>
-            </table>
+        <div class="col-xs-6 col-md-3">
+            <a href="#" class="thumbnail">
+                <img src="./public/images/3.jpg" alt="...">
+            </a>
+        </div>
+        <div class="col-xs-6 col-md-3">
+            <a href="#" class="thumbnail">
+                <img src="./public/images/1.jpg" alt="...">
+            </a>
+        </div>
+        <div class="col-xs-6 col-md-3">
+            <a href="#" class="thumbnail">
+                <img src="./public/images/5.jpg" alt="...">
+            </a>
         </div>
     </div>
-
-    <!--TODO Вынести это в отдельный модуль-->
-    <script>
-        $(document).ready(function () {
-            $('#firstTable').click(function (e) {
-                e.preventDefault();
-                if (e.target.tagName === 'TD') {
-                    $('#secondTable tbody').append($(e.target.parentNode));
-                }
-            });
-            $('#secondTable').click(function (e) {
-                e.preventDefault();
-                if (e.target.tagName === 'TD') {
-                    $('#firstTable tbody').append($(e.target.parentNode));
-                }
-            });
-        });
-    </script>
+    <script src="./public/js/library/requirejs/require.js" data-main="public/js/main"></script>
 </div>
 </body>
 </html>
