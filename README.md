@@ -39,6 +39,8 @@ git checkout -f first_lesson
 
 Если понадобится презентация - её можно посмотреть [тут](https://docs.google.com/a/ria.com/presentation/d/1tX7CKmrJ6ebHGyWIdbWsxoSzvK3gSGVA_mq-ArJPk-o/edit?usp=sharing)
 
+[Тут](http://habrahabr.ru/post/152833/) неплохая статья о том, как начать работу require.js
+
 Урок 2. Основы [Flight.js](https://github.com/flightjs/flight)
 ========================
 
