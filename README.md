@@ -118,3 +118,13 @@ define(
 Ответы на многие вопросы можно получить [тут](https://github.com/flightjs/flight/blob/master/doc/README.md).
 Если понадобится презентация - вот [ссылка](https://docs.google.com/a/ria.com/presentation/d/1HAVzKiqfnLg3Wmh0wsG6zGdhnZmZ0g-hj2kOLosItCA/edit?usp=sharing)
 
+Урок 3. Bower и require.js - автоматизация сборки клиентского кода
+==================================================================
+Перечень ресурсов:
+- [Презентация](https://docs.google.com/a/ria.com/presentation/d/1ZtigTbWKPJm5oj03Ce3yMJ56MDYxQ-CPkArZhxlvlHs/edit?usp=sharing)
+- [Документация по npm](https://www.npmjs.org/doc/misc/npm-scripts.html)
+- [Документация по require.js](http://requirejs.org/docs/optimization.html#wholeproject)
+
+Домашнеее задание: 
+- настроить установку всех необходимых пакетов 
+- собрать весь код в один файл при помощи оптимизатора require.js
