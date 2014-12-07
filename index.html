@@ -37,26 +37,103 @@
 </nav>
 
 <div class="container theme-showcase" role="main">
-    <div class="row" id="thumbnails">
-        <div class="col-xs-6 col-md-3">
-            <a href="#" class="thumbnail">
-                <img src="./public/images/2.jpg" alt="...">
-            </a>
+    <div class="row">
+        <div class="col-lg-offset-2 col-lg-8">
+            <div class="input-group">
+                <input type="text" class="form-control" placeholder="Что ищем?"  autofocus="autofocus"/>
+                <span class="input-group-btn">
+                  <button class="btn btn-primary" type="button">Поиск</button>
+                </span>
+            </div>
         </div>
-        <div class="col-xs-6 col-md-3">
-            <a href="#" class="thumbnail">
-                <img src="./public/images/3.jpg" alt="...">
-            </a>
+    </div>
+    <hr/>
+    <div class="row">
+        <div class="col-md-3">
+            <form role="form">
+                <div class="form-group">
+                    <label for="categorySelect">Тип транспорта</label>
+                    <select class="form-control" name="category" id="categorySelect">
+                        <option value="0">Выберите</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="markSelect">Марка</label>
+                    <select class="form-control" name="mark" id="markSelect">
+                        <option value="0">Выберите</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="modelSelect">Модель</label>
+                    <select class="form-control" name="model" id="modelSelect">
+                        <option value="0">Выберите</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-primary">Поиск</button>
+            </form>
         </div>
-        <div class="col-xs-6 col-md-3">
-            <a href="#" class="thumbnail">
-                <img src="./public/images/1.jpg" alt="...">
-            </a>
-        </div>
-        <div class="col-xs-6 col-md-3">
-            <a href="#" class="thumbnail">
-                <img src="./public/images/5.jpg" alt="...">
-            </a>
+        <div class="col-md-9">
+            <div class="col-xs-6 col-md-3">
+                <a href="#" class="thumbnail">
+                    <img src="./public/images/2.jpg" alt="...">
+                </a>
+            </div>
+            <div class="col-xs-6 col-md-3">
+                <a href="#" class="thumbnail">
+                    <img src="./public/images/3.jpg" alt="...">
+                </a>
+            </div>
+            <div class="col-xs-6 col-md-3">
+                <a href="#" class="thumbnail">
+                    <img src="./public/images/1.jpg" alt="...">
+                </a>
+            </div>
+            <div class="col-xs-6 col-md-3">
+                <a href="#" class="thumbnail">
+                    <img src="./public/images/5.jpg" alt="...">
+                </a>
+            </div>
+            <div class="col-xs-6 col-md-3">
+                <a href="#" class="thumbnail">
+                    <img src="./public/images/5.jpg" alt="...">
+                </a>
+            </div>
+            <div class="col-xs-6 col-md-3">
+                <a href="#" class="thumbnail">
+                    <img src="./public/images/5.jpg" alt="...">
+                </a>
+            </div>
+            <div class="col-xs-6 col-md-3">
+                <a href="#" class="thumbnail">
+                    <img src="./public/images/5.jpg" alt="...">
+                </a>
+            </div>
+            <div class="col-xs-6 col-md-3">
+                <a href="#" class="thumbnail">
+                    <img src="./public/images/5.jpg" alt="...">
+                </a>
+            </div>
+            <div class="col-xs-6 col-md-3">
+                <a href="#" class="thumbnail">
+                    <img src="./public/images/5.jpg" alt="...">
+                </a>
+            </div>
+            <div class="col-xs-6 col-md-3">
+                <a href="#" class="thumbnail">
+                    <img src="./public/images/5.jpg" alt="...">
+                </a>
+            </div>
+            <div class="col-xs-6 col-md-3">
+                <a href="#" class="thumbnail">
+                    <img src="./public/images/5.jpg" alt="...">
+                </a>
+            </div>
+            <div class="col-xs-6 col-md-3">
+                <a href="#" class="thumbnail">
+                    <img src="./public/images/5.jpg" alt="...">
+                </a>
+            </div>
+
         </div>
     </div>
     <script src="./public/js/library/requirejs/require.js" data-main="public/js/main"></script>
