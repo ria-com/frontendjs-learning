@@ -1,15 +1,22 @@
 "use strict";
 
-define(
-    'main',
-    [
-        'components/firstComponent'
-    ],
-    function (firstComponent, secondComponent) {
 
-        /**
-         * Этот компонент генерит событие и говорит всем, кто его слушает сколько элементов надо показывать
-         */
-        firstComponent.attachTo('#thumbnails');
+requirejs.config({
+    urlArgs: 'v=' + (new Date().getTime()),
+    shim   : {
+        'library/q/q'                                   : {
+            exports: 'Q'
+        }
+    }
+});
+
+define(
+    "main",
+    [
+        "library/jquery/dist/jquery",
+        "components/search"
+    ],
+    function ($, search) {
+        search.attachTo(document);
     }
 );
