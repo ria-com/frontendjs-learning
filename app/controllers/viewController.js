@@ -15,7 +15,7 @@
                 ].join('')
             })).body);
             this.body = {
-                photo: ['https://', 'cdn.riastatic.com/photosnew/', data.result.photo_data.photo.seo_link.replace('.jpg', 'bx.jpg')].join('')
+                photo: data.result.photo_data.photo?['https://', 'cdn.riastatic.com/photosnew/', data.result.photo_data.photo.seo_link.replace('.jpg', 'bx.jpg')].join(''):'https://img.auto.ria.com/images/no-photo/no-photo-135x90.jpg'
             };
             yield next;
         }

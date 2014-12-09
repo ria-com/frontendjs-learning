@@ -129,3 +129,27 @@ define(
 - взять результат выполнения предыдущего задания
 - настроить установку всех необходимых пакетов
 - собрать весь код в один файл при помощи оптимизатора require.js
+
+
+Урок 4. Обещания, async и CORS
+==============================
+Чтобы перейти к данному уроку, необходимо выполнить команду
+```bash
+git checkout -f fourth_lesson
+```
+
+Чтобы запустить данный пример, выполните команду:
+```bash
+npm install
+```
+
+Перечень ресурсов:
+- [Презентация](https://docs.google.com/a/ria.com/presentation/d/1FJafavP32_W_-gyF9UX8o_6IyCnWmWTM1rv0JOoVT4Q/edit?usp=sharing)
+- [Документация по Q](https://github.com/kriskowal/q)
+- [Документация по async](https://github.com/caolan/async)
+- [Что такое CORS](https://ru.wikipedia.org/wiki/Cross-origin_resource_sharing)
+
+Домашнее задание:
+- На серверной части в файле **app/app.js** описать *middleware*, который будет отдавать правильный заголовок *Access-Control-Allow-Origin*
+- На клиентской части в файле **public/js/components/ui/results.js** необходимо взять под контроль загрузку результатов поиска. Грузить их паралельно и в одно колбеке показывать/скрывать спиннер
+- На клиентской части в файле **public/js/components/search.js** необходимо связать две компоненты: *textSearch* и *leftForm*, чтобы при выборе варианта из автокомплита заполнялась форма слева

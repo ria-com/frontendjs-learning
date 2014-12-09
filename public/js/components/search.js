@@ -25,8 +25,14 @@ define(
                 resultsData.attachTo(this.select("results"));
                 results.attachTo(this.select("results"));
 
+                /**
+                 * @todo Необходимо связать компоненту textSearch с leftForm так, чтобы при выборе вариантов в автокомплите заполнялась форма
+                 */
                 this.on('change', {
                     leftForm: function (e, data) {
+                        this.trigger(this.select("results"), 'changeData', data);
+                    },
+                    textSearch: function(e, data){
                         this.trigger(this.select("results"), 'changeData', data);
                     }
                 });

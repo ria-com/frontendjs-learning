@@ -41,8 +41,7 @@ define(
                  */
                 data.results.forEach(function (item, index) {
                     this.getData(item).then(function(data){
-                        console.log('data --> ', data);
-                        this.$node.append('<div class="col-xs-6 col-md-3"><a href="#" class="thumbnail"><img src="'+data.photo+'" alt="..."></a></div>');
+                        this.$node.append('<div class="col-xs-6 col-md-3"><a href="#" class="thumbnail"><img width="180" height="171" src="'+data.photo+'" alt="..."></a></div>');
                     }.bind(this));
                 }.bind(this));
             };

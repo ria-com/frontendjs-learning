@@ -13,7 +13,10 @@
   "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "install": "bower install"
+    "install": "bower install",
+    "postinstall": "npm start",
+    "start": "/usr/bin/node --harmony index.js",
+    "prestart": "/usr/bin/google-chrome index.html"
   },
   "repository": {
     "type": "git",
