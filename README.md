@@ -147,7 +147,8 @@ npm install
 - [Презентация](https://docs.google.com/a/ria.com/presentation/d/1FJafavP32_W_-gyF9UX8o_6IyCnWmWTM1rv0JOoVT4Q/edit?usp=sharing)
 - [Документация по Q](https://github.com/kriskowal/q)
 - [Документация по async](https://github.com/caolan/async)
-- [Что такое CORS](https://ru.wikipedia.org/wiki/Cross-origin_resource_sharing)
+- [Что такое CORS?](https://ru.wikipedia.org/wiki/Cross-origin_resource_sharing)
+- [Как писать middleware для koa.js?](http://koajs.com/#application)
 
 Домашнее задание:
 - На серверной части в файле **app/app.js** описать *middleware*, который будет отдавать правильный заголовок *Access-Control-Allow-Origin*
