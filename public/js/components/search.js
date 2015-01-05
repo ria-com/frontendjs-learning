@@ -32,8 +32,9 @@ define(
                     leftForm: function (e, data) {
                         this.trigger(this.select("results"), 'changeData', data);
                     },
-                    textSearch: function(e, data){
+                    textSearch: function (e, data) {
                         this.trigger(this.select("results"), 'changeData', data);
+                        this.trigger(this.select('leftForm'), 'changeData', data);
                     }
                 });
 

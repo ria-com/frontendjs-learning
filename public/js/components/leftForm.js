@@ -5,12 +5,13 @@ define(
     [
         "library/flight/lib/component",
         "library/flight/lib/utils",
+        "library/async/lib/async",
         "components/data/categories",
         "components/data/marks",
         "components/data/models",
         "components/ui/select"
     ],
-    function (definecomponent, utils, categoriesData, marksData, modelsData, select) {
+    function (definecomponent, utils, async, categoriesData, marksData, modelsData, select) {
         return definecomponent(leftForm);
 
         function leftForm() {
@@ -30,7 +31,13 @@ define(
                 });
             };
 
+            this.elementDependencies = {
+                "model_id": ["category_id", "marka_id"],
+                "marka_id": ["category_id"]
+            };
+
             this.after('initialize', function () {
+
                 categoriesData.attachTo(this.select('category'));
                 select.attachTo(this.select('category'));
 
@@ -61,7 +68,38 @@ define(
                     model: utils.compose(this.onChange, function(e){
                         return e;
                     })
-                })
+                });
+
+                this.on('changeData', function(e, data){
+                    var asyncFunctions = {},
+                        _this = this;
+                    for(var paramName in data){
+                        if(this.elementDependencies[paramName]){
+                            (function(paramName){
+                                asyncFunctions[paramName] = _this.elementDependencies[paramName].concat(function(next){
+                                    var select = _this.$node.find('[name="'+paramName+'"]');
+                                    _this.on(select, 'dataChanged', function(){
+                                        select.val(data[paramName]);
+                                        _this.trigger(select, 'change');
+                                        return next();
+                                    });
+                                });
+                            }(paramName));
+                        }else{
+                            (function(paramName){
+                                asyncFunctions[paramName] = function(next){
+                                    var select = _this.$node.find('[name="'+paramName+'"]');
+                                    select.val(data[paramName]);
+                                    _this.trigger(select, 'change');
+                                    return next();
+                                }
+                            }(paramName));
+                        }
+                    }
+                    async.auto(asyncFunctions, function(err, results){
+                        console.log('err --> ', err);
+                    });
+                });
             });
         }
     }
