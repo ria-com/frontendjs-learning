@@ -36,14 +36,29 @@ define(
                 this.select('items')
                     .remove();
 
-                /**
-                 * @todo Взять под контроль этот процесс - грузить паралельно и в общем колбеке убирать/показывать спиннер
-                 */
+                var promises = [];
+
                 data.results.forEach(function (item, index) {
-                    this.getData(item).then(function(data){
-                        this.$node.append('<div class="col-xs-6 col-md-3"><a href="#" class="thumbnail"><img width="180" height="171" src="'+data.photo+'" alt="..."></a></div>');
-                    }.bind(this));
+                    promises.push(this.getData(item));
                 }.bind(this));
+                /**
+                 * Показываем наш спиннер
+                 */
+                Q.all(promises)
+                    .done(function(results){
+                        for(var i in results){
+                            var data = results[i];
+                            this.$node.append('<div class="col-xs-6 col-md-3"><a href="#" class="thumbnail"><img width="180" height="171" src="'+data.photo+'" alt="..."></a></div>');
+                        }
+                        /**
+                         * Прячем наш спиннер
+                         */
+                    }.bind(this), function(err){
+                        /**
+                         * Обработчик ошибок
+                         */
+                        console.log('err --> ', err);
+                    });
             };
             this.after('initialize', function () {
                 this.on('dataChanged', this.renderResults);

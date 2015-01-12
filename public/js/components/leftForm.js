@@ -73,8 +73,15 @@ define(
                 this.on('changeData', function(e, data){
                     var asyncFunctions = {},
                         _this = this;
+
+                    /**
+                     * Формируем массив функций
+                     */
                     for(var paramName in data){
                         if(this.elementDependencies[paramName]){
+                            /**
+                             * Если элемент зависим, тогда внутри функции подписываемся на событие готовности данных
+                             */
                             (function(paramName){
                                 asyncFunctions[paramName] = _this.elementDependencies[paramName].concat(function(next){
                                     var select = _this.$node.find('[name="'+paramName+'"]');
@@ -86,6 +93,9 @@ define(
                                 });
                             }(paramName));
                         }else{
+                            /**
+                             * Если элемент независим, тогда просто усанавливаем ему нужное нам значение
+                             */
                             (function(paramName){
                                 asyncFunctions[paramName] = function(next){
                                     var select = _this.$node.find('[name="'+paramName+'"]');
@@ -96,6 +106,9 @@ define(
                             }(paramName));
                         }
                     }
+                    /**
+                     * Запускаем функции на выполнение
+                     */
                     async.auto(asyncFunctions, function(err, results){
                         console.log('err --> ', err);
                     });
