@@ -154,3 +154,124 @@ npm install
 - На серверной части в файле **app/app.js** описать *middleware*, который будет отдавать правильный заголовок *Access-Control-Allow-Origin*
 - На клиентской части в файле **public/js/components/ui/results.js** необходимо взять под контроль загрузку результатов поиска. Грузить их паралельно и в одном колбеке показывать/скрывать спиннер
 - На клиентской части в файле **public/js/components/search.js** необходимо связать две компоненты: *textSearch* и *leftForm*, чтобы при выборе варианта из автокомплита заполнялась форма слева
+
+
+Как надо и как не надо писать javascript
+=============================
+
+Избегайте конкатенации строк в критических местах:
+
+```javascript
+historyBlock.set("link", "/search/?view_type_id=1&" + item.query_str);
+```
+
+Упрощайте структуры **if-else**, если они отличаются всего одним параметром:
+
+```javascript
+this.on(this.select('agreement'), 'change', function(e){
+    if($(e.target).is("":checked"")){
+        $(e.target).removeClass('show-error');
+        this.Agreement = true;
+        $(this.select('submitForm')).removeClass('grey disabled').addClass('green');
+    }else{
+        this.Agreement = false;
+        $(e.target).addClass('show-error');
+        $(this.select('submitForm')).removeClass('green').addClass('grey disabled');
+    }
+}.bind(this));
+```
+
+```javascript
+/* Клик ссылку ""Технические характеристики"" */
+this.select('showTech').on('click', function(){
+    $(this.select('techBlock')).slideToggle('', function() {
+        if($(this).is("":hidden"")){
+            $('#showTech').find('i').removeClass('icon-add__arru').addClass('icon-add__arrd');
+        }else{
+            $('#showTech').find('i').removeClass('icon-add__arrd').addClass('icon-add__arru');
+        }
+    });
+}.bind(this));
+```
+
+Делегируйте обработку событий правильно:
+
+```javascript
+var categoryId = $(e.target).val();
+this.trigger(this.select('markaId'), 'changeData', {
+    value: categoryId
+});
+this.trigger(this.select('subCategory'), 'changeData', {
+    value: categoryId
+});
+this.trigger(this.select('options'), 'changeData', {
+    value: categoryId
+});
+this.trigger(this.select('driveId'), 'changeData', {
+    value: categoryId
+});
+this.setCharacteristics(categoryId);
+```
+
+Сокращайте записи с логическим оператором **ИЛИ**:
+```javascript
+if (resp.result) {
+    if (resp.response_code == 1 || resp.response_code == 2) {
+        this._showVerificationCodeInput(data.phone);
+    }
+}
+```
+
+Избегайте прямого указания css-селекторов непосредственно в коде:
+
+```javascript
+/* Клик ссылку ""Технические характеристики"" */
+this.select('showTech').on('click', function(){
+    $(this.select('techBlock')).slideToggle('', function() {
+        if($(this).is("":hidden"")){
+            $('#showTech').find('i').removeClass('icon-add__arru').addClass('icon-add__arrd');
+        }else{
+            $('#showTech').find('i').removeClass('icon-add__arrd').addClass('icon-add__arru');
+        }
+    });
+}.bind(this));
+```
+
+Не надо вешать обработчики событий при помощи конкатенации строк и свойства innerHTML:
+
+```javascript
+var rozdelName = "ЧЕРНОВИКИ";
+var rozdelLink = "/user/menu/?section=active&viewType=draft";
+var rozdelOnclick = "_gaq.push(['_trackEvent', 'Search_Gallery_Flight', 'Click_on_Draft', 'Block_Not_Published']);";
+var payurl = "/user/buypoints/autoId/"+autoId+"/publish/1";
+if(view_type === 'awaitingPayment'){
+    rozdelName = "Ожидают оплаты";
+    rozdelLink = "/user/menu/?section=active&viewType=awaitingPayment";
+    rozdelOnclick = "_gaq.push(['_trackEvent', 'Search_Gallery_Flight', 'Click_on_Awaiting_Payment', 'Block_Not_Published']);";
+    this.getOrderUrl(autoId).then(function (response){
+        if (response && response.url) {
+            payurl = response.url;
+            payButton.click('click', function (e){
+                this.newWindowOpen(payurl,1000,700);
+            }.bind(this));
+        }else{
+            this.on(payButton, 'click', function (e){
+                this.publicateAuto(autoId).then(function(status){
+                    if(status == 0){
+                        this._render();
+                    }
+                }.bind(this));
+            });
+        }
+    }.bind(this), function (err){ console.warn(err);});
+}else{
+    this.on(payButton, 'click', function (){
+        this.publicateAuto(autoId).then(function(status){
+            if(status == 0){
+                this._render();
+            }
+        }.bind(this));
+    });
+}
+p_wrap.append('<strong class="red"><a class="red" onclick="'+rozdelOnclick+'" href="'+rozdelLink+'">'+rozdelName+'</a></strong>');
+```
